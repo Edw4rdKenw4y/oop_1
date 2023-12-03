@@ -22,16 +22,16 @@ import classes.user.*;
 public class StudentFunction {
 
     public static void doExam(Scanner sc, Student Student) {
-        System.out.println("Nhap ma mon:");
+        System.out.println("Enter the subject's ID");
 
         Subject subject = new Subject(sc.nextLine());
 
         CustomDate date = new CustomDate();
-        System.out.println("nhap ngay thi:");
+        System.out.println("Enter exam's day:");
         String newDate = sc.nextLine();
-        System.out.println("nhap thang:");
+        System.out.println("Enter exam's month:");
         String newMonth = sc.nextLine();
-        System.out.println("nhap nam:");
+        System.out.println("Enter exam's year:");
         String newYear = sc.nextLine();
 
         date.setDay(newDate);
@@ -49,28 +49,28 @@ public class StudentFunction {
 
         if (exam.exists()) {
             if (examRecord.exists()) {
-                System.out.println("Ban da lam het bai kiem tra");
+                System.out.println("You have done all the exam");
             } else if (!Session.checkDate(date)) {
-                System.out.println("khong phai thoi gian lam bai");
+                System.out.println("Not the time for doing exam");
             } else {
                 Session.run(sc, examRepository, examRecordRepository, "exam" + Student.getOrnum(),
                         Student.getUsername());
             }
         } else {
-            System.out.println("Ban khong co bai kiem tra");
+            System.out.println("You don't have any exams");
         }
 
     }
 
     public static void DisplayResult(Scanner sc, Student Student) {
-        System.out.println("Nhap ma mon:");
+        System.out.println("Enter the subject's ID");
         Subject subject = new Subject(sc.nextLine());
         CustomDate date = new CustomDate();
-        System.out.println("nhap ngay thi:");
+        System.out.println("Enter exam's day:");
         String newDate = sc.nextLine();
-        System.out.println("nhap thang:");
+        System.out.println("Enter exam's month:");
         String newMonth = sc.nextLine();
-        System.out.println("nhap nam:");
+        System.out.println("Enter exam's year:");
         String newYear = sc.nextLine();
 
         date.setDay(newDate);
