@@ -301,14 +301,14 @@ public class ProfessorFunction {
     }
 
     public static void deleteExam(Subject subject, Scanner sc) {
-        System.out.println("Nhap ten class:");
+        System.out.println("Enter class's name:");
         String clazz = sc.nextLine();
         CustomDate date = new CustomDate();
-        System.out.println("nhap ngay thi:");
+        System.out.println("Enter exam's day:");
         String newDate = sc.nextLine();
-        System.out.println("nhap thang:");
+        System.out.println("Enter exam's month:");
         String newMonth = sc.nextLine();
-        System.out.println("nhap nam:");
+        System.out.println("Enter exam's year:");
         String newYear = sc.nextLine();
 
         date.setDay(newDate);
@@ -316,26 +316,26 @@ public class ProfessorFunction {
         date.setYear(newYear);
 
         ExamRepository examRepository = new ExamRepository(Constant.dataPath.Exams_Dir, subject, clazz, date);
-        System.out.println("Nhung bai kiem tra hien tai");
+        System.out.println("All exam on the selected date");
         examRepository.listAllExamsCreated();
-        System.out.println("nhap ten bai kiem tra muon xoa");
+        System.out.println("Enter exam's name you want to delete");
         String examname = sc.nextLine();
         if (examRepository.removeExam(examname)) {
-            System.out.println("Bai kiem tra da duoc xoa!");
+            System.out.println("Exam deleted!");
         } else {
-            System.out.println("Loi!");
+            System.out.println("Wrong exam's name!");
         }
     }
 
     public static void addExam(Subject subject, Scanner sc) {
-        System.out.println("Nhap ten class:");
+        System.out.println("Enter class's name:");
         String clazz = sc.nextLine();
         CustomDate date = new CustomDate();
-        System.out.println("nhap ngay thi:");
+        System.out.println("Enter exam's day:");
         String newDate = sc.nextLine();
-        System.out.println("nhap thang:");
+        System.out.println("Enter exam's month:");
         String newMonth = sc.nextLine();
-        System.out.println("nhap nam:");
+        System.out.println("Enter exam's year:");
         String newYear = sc.nextLine();
 
         date.setDay(newDate);
@@ -343,13 +343,13 @@ public class ProfessorFunction {
         date.setYear(newYear);
 
         ExamRepository examRepository = new ExamRepository(Constant.dataPath.Exams_Dir, subject, clazz, date);
-        System.out.println("Nhap id exam");
+        System.out.println("Enter exam's id:");
         String examId = sc.nextLine();
-        System.out.println("nhap exam name:");
+        System.out.println("Enter exam's name:");
         String examName = sc.nextLine();
-        System.out.println("nhap exam note:");
+        System.out.println("Enter your note:");
         String examNote = sc.nextLine();
-        System.out.println("nhap exam time:");
+        System.out.println("Enter exam time:(minute)");
         int examTime = sc.nextInt();
         sc.nextLine();
 
@@ -385,7 +385,7 @@ public class ProfessorFunction {
         Exam exam = new Exam(examId, examName, subject, examNote, date, examTime, questionSet);
         sc.nextLine();
 
-        System.out.println("Nhap ten bai exam");
+        System.out.println("Enter exam's name");
         String examFileName = sc.nextLine();
 
         if (examRepository.addExam(exam, examFileName)) {
@@ -396,14 +396,14 @@ public class ProfessorFunction {
     }
 
     public static void DisplayExamResult(Subject subject, Scanner sc) {
-        System.out.println("Nhap ten class:");
+        System.out.println("Enter class's name:");
         String clazz = sc.nextLine();
         CustomDate date = new CustomDate();
-        System.out.println("nhap ngay thi:");
+        System.out.println("Enter exam's day:");
         String newDate = sc.nextLine();
-        System.out.println("nhap thang:");
+        System.out.println("Enter exam's month:");
         String newMonth = sc.nextLine();
-        System.out.println("nhap nam:");
+        System.out.println("Enter exam's year:");
         String newYear = sc.nextLine();
 
         date.setDay(newDate);
@@ -412,10 +412,11 @@ public class ProfessorFunction {
 
         ExamRecordRepository examRecordRepository = new ExamRecordRepository(Constant.dataPath.ExamRecords_Dir, subject,
                 clazz, date);
-        System.out.println("Danh sach ket qua cau hoi:");
+        System.out.println("Questions List:");
         examRecordRepository.displaySummaryResults();
+        System.out.println("Exams List");
         examRecordRepository.listAllExamRecordsCreated();
-        System.out.println("Nhap ten ket qua bai kiem tra");
+        System.out.println("Enter the Name of the exam");
         String examname = sc.nextLine();
         examRecordRepository.displayExamRecord(examname);
     }
